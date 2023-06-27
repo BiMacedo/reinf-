@@ -5,5 +5,7 @@ from django.urls import include, path
 app_name = 'polls'
 urlpatterns = [
  
-    path('', views.index, name='index'),
+    path('', views.login, name='login'),
+    path('',views.dashboard, name='dashboard')
+
 ]

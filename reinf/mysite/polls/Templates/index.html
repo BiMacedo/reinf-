@@ -1,0 +1,36 @@
+<!-- login.html -->
+
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/core/style.css'%}">
+</head>
+<body>
+    <h1>Login</h1>
+    
+    <div class="form">
+
+        <form method="post">
+            {% csrf_token %}
+            
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+        
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+        
+        <br>
+        
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+        
+        <br>
+        
+        <input type="submit" value="Login">
+    </form>
+</div>
+</body>
+</html>
