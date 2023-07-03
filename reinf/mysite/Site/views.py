@@ -33,6 +33,8 @@ def user_login(request):
 
 
 def logon(request):
-      return render(request, 'logon.html')
-
-
+    if request.method == 'GET':
+        return render(request, 'logon.html')
+    
+    elif request.method == 'POST':
+        return redirect(request, 'logon.html')

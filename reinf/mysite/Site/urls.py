@@ -5,8 +5,11 @@ from django.contrib.auth.decorators import login_required
 
 app_name = 'Site'
 urlpatterns = [
-    path('', views.user_login, name='login'),
-    path('logon', login_required(views.logon), name='logon'),
+    path('',views.user_login,name='login'),
+   # path('logon/',views.logon,name='logon'),
+    path('logon/',login_required(views.logon),name='Logon'),  
+
+    
     
 
 ]

@@ -1,0 +1,17 @@
+html, body{
+  margin: 0;
+  padding: 0;
+
+}
+.left-column {
+  /*float: left;*/
+  width:250px ; 
+  border: 1px solid blue;
+  padding: 20px;
+
+
+}
+
+.right {
+ margin-left: 270px;
+}

@@ -93,3 +93,6 @@ class usuario(models.Model):
         managed = True  
         db_table = 'usuario'
         unique_together = (('cod_empresa', 'cod_usuario'),)
+
+    def __str__(self):
+        return self.usuario
