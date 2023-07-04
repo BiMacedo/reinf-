@@ -2,16 +2,48 @@ html, body{
   margin: 0;
   padding: 0;
 
+  
 }
-.left-column {
+
+.caixinha{
+  border: 1px solid red;
+  float: left;
+  justify-content: end;
+  text-align: end;
+}
+
+#sidebar {
   /*float: left;*/
-  width:250px ; 
+  width:370px ; 
   border: 1px solid blue;
-  padding: 20px;
-
-
+  padding: 15px;
 }
+
+.sidebar.open {
+  left: 0;
+}   
+
+button#imageButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+li {
+  list-style-type: none;
+  text-decoration: none;
+  
+}
+
 
 .right {
- margin-left: 270px;
+
 }
+
+.home{
+
+
+}
+
+
+  

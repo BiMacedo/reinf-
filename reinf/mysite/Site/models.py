@@ -96,3 +96,6 @@ class usuario(models.Model):
 
     def __str__(self):
         return self.usuario
+    
+    class imagem(models.Model):
+        imagem = models.ImageField(upload_to='img/')
