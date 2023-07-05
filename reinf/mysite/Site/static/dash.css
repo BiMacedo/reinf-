@@ -1,49 +1,30 @@
-html, body{
+html, body {
   margin: 0;
   padding: 0;
-
-  
 }
 
-.caixinha{
-  border: 1px solid red;
-  float: left;
-  justify-content: end;
-  text-align: end;
-}
-
-#sidebar {
-  /*float: left;*/
-  width:370px ; 
+.sidebar {
+  width: 370px;
   border: 1px solid blue;
   padding: 15px;
 }
 
-.sidebar.open {
-  left: 0;
-}   
-
-button#imageButton {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-li {
+.sidebar ul {
   list-style-type: none;
-  text-decoration: none;
-  
+  padding: 0;
+  margin: 0;
 }
 
-
-.right {
-
+.sidebar li {
+  margin-bottom: 10px;
 }
 
-.home{
-
-
+#container {
+  display: flex;
 }
 
-
-  
+.caixinha {
+  border: 1px solid blue;
+  padding: 15px;
+  text-align: end;
+}

@@ -1,15 +1,44 @@
-document.getElementById("toggleButton").addEventListener("click", function() {
-  document.getElementById("sidebar").classList.toggle("open");
-});
+class MobileNavbar {
+  constructor(mobileMenu, navList, navLinks) {
+    this.mobileMenu = document.querySelector(mobileMenu);
+    this.navList = document.querySelector(navList);
+    this.navLinks = document.querySelectorAll(navLinks);
+    this.activeClass = "active";
 
-document.getElementById("imageButton").addEventListener("click", function() {
-  var image = document.getElementById("imageButton").querySelector("img");
-  
-  if (image.getAttribute("src") === "imagem1.jpg") {
-    image.setAttribute("src", "imagem2.jpg");
-    image.setAttribute("alt", "Imagem 2");
-  } else {
-    image.setAttribute("src", "imagem1.jpg");
-    image.setAttribute("alt", "Imagem 1");
+    this.handleClick = this.handleClick.bind(this);
   }
-});
+
+  animateLinks() {
+    this.navLinks.forEach((link, index) => {
+      link.style.animation
+        ? (link.style.animation = "")
+        : (link.style.animation = `navLinkFade 0.5s ease forwards ${
+            index / 7 + 0.3
+          }s`);
+    });
+  }
+
+  handleClick() {
+    this.navList.classList.toggle(this.activeClass);
+    this.mobileMenu.classList.toggle(this.activeClass);
+    this.animateLinks();
+  }
+
+  addClickEvent() {
+    this.mobileMenu.addEventListener("click", this.handleClick);
+  }
+
+  init() {
+    if (this.mobileMenu) {
+      this.addClickEvent();
+    }
+    return this;
+  }
+}
+
+const mobileNavbar = new MobileNavbar(
+  ".mobile-menu",
+  ".nav-list",
+  ".nav-list li",
+);
+mobileNavbar.init();

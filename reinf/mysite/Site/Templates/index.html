@@ -1,43 +1,41 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
     <link rel="icon" href="{%static 'img/logo.png'%}" type="image/x-icon">
 </head>
+
 <body>
-   
-    <div class="form">
-        
-        <form action="{% url 'Site:login' %}" method="post">
+    <div class="login-page">
+        <div class="form">
             <img src="{% static 'img/logo.png'%}" alt="Logo Process" width="70px">
+          <form class="login-form" action="" method="post">
 
-         {% csrf_token %}
-
-         {% if erro_login %}
-         <script>
-             alert('{{ erro_login }}')
-         </script>
-         {% endif %}
-
-        {% if error_message %}
-        <p><strong>{{ error_message }}</strong></p>
-        {% endif %}
-        
-        <label for="username">Username:</label>
-        <input type="text" name="usuario" id="usuario">
-        <br>
-        
-        <label for="password">Password :  </label>
-        <input type="password" name="senha" id="senha">
-
-        
-        <br>
-        
-        <input type="submit" value="Login">
-    </form>
-</div>
+            {% csrf_token %}
+      
+            {% if erro_login %}
+            <script>
+              alert('{{ erro_login }}')
+            </script>
+            {% endif %}
+      
+            {% if error_message %}
+            <p><strong>{{ error_message }}</strong></p>
+            {% endif %}
+      
+            <input type="text" placeholder="username" name="usuario" id="usuario"/>
+            <input type="password" placeholder="password" name="senha" id="senha"/>
+            <button type="submit">login</button>
+          <!--  <p class="message">Not registered? <a href="#">Create an account</a></p>-->
+          </form>
+        </div>
+      </div>
+      
+      
 </body>
+
 </html>

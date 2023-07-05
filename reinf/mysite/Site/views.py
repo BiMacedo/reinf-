@@ -22,7 +22,7 @@ def user_login(request):
         
         if auth_usuario is not None:
             login(request, auth_usuario)
-            return redirect('logon.html')
+            return render(request,'logon.html')
 
         else:
 
@@ -38,3 +38,4 @@ def logon(request):
     
     elif request.method == 'POST':
         return redirect(request, 'logon.html')
+    
