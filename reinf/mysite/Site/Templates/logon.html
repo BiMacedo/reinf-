@@ -15,6 +15,7 @@
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="{%static 'dash.css' %}">
   <link rel="icon" href="{%static 'img/logo.png'%}" type="image/x-icon">
+
 </head>
 
 <body>
@@ -75,6 +76,29 @@
       </div>
     </div>
   </div>
+  <div class="table-container">
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CNPJ</th>
+            <th>Grupo Empresa</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>{{request.cod_empresa}}</td>
+            <td>{{request.cnpj}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
 
   {% endif %}
   <main>
@@ -86,11 +110,10 @@
     <section style='background: #3498db; color:#fff;'></section>
     <br />
     <center>&copy;<NAME>, All Rights Reserved
-      &nbsp;&nbsp;|&nbsp;&nbsp;| Designed by&nbsp;&nbsp;<b>
-        <img height=50px width=176px alt="" title=" <NAME>" data-tippy-theme="light"></b>
+        &nbsp;&nbsp;|&nbsp;&nbsp;| Designed by&nbsp;&nbsp;<b>
+          <img height=50px width=176px alt="" title=" <NAME>" data-tippy-theme="light"></b>
   </footer>
 
 </body>
 
 </html>
-

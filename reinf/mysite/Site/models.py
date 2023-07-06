@@ -18,7 +18,7 @@ class Empresa(models.Model):
     cnae = models.CharField(max_length=7, blank=True, null=True)
     iest = models.CharField(max_length=18, blank=True, null=True)
     suframa = models.CharField(max_length=10, blank=True, null=True)
-    grp_empresa = models.ForeignKey('GrpEmpresa', models.DO_NOTHING, db_column='grp_empresa', blank=True, null=True)
+    grp_empresa = models.ForeignKey('GrpEmpresa', models.DO_NOTHING, blank=True, null=True)
     chave_acesso = models.CharField(max_length=40, blank=True, null=True)
 
     class Meta:
@@ -99,3 +99,4 @@ class usuario(models.Model):
     
     class imagem(models.Model):
         imagem = models.ImageField(upload_to='img/')
+        
