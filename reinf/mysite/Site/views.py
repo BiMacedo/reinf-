@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
-from .models import usuario as Mod_usuario
+from .models import usuarios as Mod_usuarios
 from .models import Empresa as Mod_Empresa
 
 from .forms import login as Form_login
@@ -39,3 +39,12 @@ def logon(request):
     
     elif request.method == 'POST':
         return redirect(request, 'logon.html')
+    
+def tabela(request):
+    Empresa = Empresa.objects.all()
+    
+    context = {
+        'Empresa': Empresa
+    }
+    
+    return render(request, 'logon.html', context)

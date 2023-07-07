@@ -1,9 +1,9 @@
 from django import forms
-from .models import usuario as Mod_usuario
+from .models import usuarios as Mod_usuarios
 
 class login(forms.ModelForm):
     senha = forms.CharField(label='senha', widget=forms.PasswordInput)
 
     class Meta: 
-        model = Mod_usuario
+        model = Mod_usuarios
         fields = '__all__'

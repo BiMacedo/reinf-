@@ -1,6 +1,13 @@
 from django.contrib import admin
-from .models import usuario
+from .models import usuarios
+from .models import Empresa
 
 # Register your models here.cl
-admin.site.register(usuario)
+
+admin.site.register(usuarios)
+
+
+admin.site.register(Empresa)
+
+
     

@@ -88,12 +88,12 @@
           </tr>
         </thead>
         <tbody>
-
+          {% for Empresa in Empresa %}
           <tr>
-            <td>{{request.cod_empresa}}</td>
-            <td>{{request.cnpj}}</td>
+            <td>{{Mod_Empresa.cod_empresa}}</td>
+            <td>{{Mod_Empresa.cnpj}}</td>
           </tr>
-
+          {% endfor %}
         </tbody>
       </table>
 

@@ -32,6 +32,7 @@ body {
 .table-container{
   display: flex;
   justify-content: center;
+  text-align: center;
 
 }
 .table {
@@ -43,7 +44,7 @@ body {
 table th,
 table td {
   padding: 8px;
-  border: 1px solid #1a1818;
+  border: 1px solid #dd190b;
 }
 
 table th {

@@ -4,6 +4,15 @@ from django.db import models
 
 # Create your models here.
     
+class GrpEmpresa(models.Model):
+    grp_empresa = models.CharField(primary_key=True, max_length=20)
+
+    class Meta:
+        managed = False
+        db_table = 'grp_empresa'
+        
+def __str__(self):
+    return self.Grp_empresa
     
 class Empresa(models.Model):
     cod_empresa = models.AutoField(primary_key=True)
@@ -25,15 +34,6 @@ class Empresa(models.Model):
         managed = False
         db_table = 'empresa'
 
-class GrpEmpresa(models.Model):
-    grp_empresa = models.CharField(primary_key=True, max_length=20)
-
-    class Meta:
-        managed = False
-        db_table = 'grp_empresa'
-        
-def __str__(self):
-    return self.Grp_empresa
 
 class Enderecos(models.Model):
     cod_empresa = models.IntegerField(primary_key=True) 
@@ -78,7 +78,7 @@ class Uf(models.Model):
         managed = False
         db_table = 'uf'
 
-class usuario(models.Model): 
+class usuarios(models.Model): 
     cod_usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Id_Usuario', null=False, blank=False)
     cod_empresa = models.OneToOneField(Empresa, models.DO_NOTHING, db_column='cod_empresa', primary_key=True, related_name='Id_Empresa') 
     nome        = models.CharField(max_length=60, blank=True, null=True)
@@ -90,12 +90,12 @@ class usuario(models.Model):
     #senha = models.CharField(max_length=8, null=False, blank=False)
     
     class Meta:
-        managed = True  
-        db_table = 'usuario'
-        unique_together = (('cod_empresa', 'cod_usuario'),)
+       managed = True  
+    db_table = 'usuarios'
+    unique_together = [('cod_empresa', 'cod_usuario'),]
 
     def __str__(self):
-        return self.usuario
+       return self.usuarios
     
     class imagem(models.Model):
         imagem = models.ImageField(upload_to='img/')
