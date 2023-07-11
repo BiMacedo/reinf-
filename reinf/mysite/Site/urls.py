@@ -11,7 +11,8 @@ app_name = 'Site'
 urlpatterns = [
     path('',views.user_login,name='login'),
    # path('logon/',views.logon,name='logon'),
-    path('logon', login_required(views.logon), name='logon'),  
+    path('logon', login_required(views.logon), name='logon'),
+   # path('tabela',views.tabela, name='Tabela'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

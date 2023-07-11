@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-from .models import usuarios as Mod_usuarios
+from .models import usuarios
 from .models import Empresa as Mod_Empresa
 
 from .forms import login as Form_login
@@ -40,11 +41,17 @@ def logon(request):
     elif request.method == 'POST':
         return redirect(request, 'logon.html')
     
-def tabela(request):
-    Empresa = Empresa.objects.all()
+def empresa(request, cod_usuario):
+    empresa = []
+    empresa = None
     
-    context = {
-        'Empresa': Empresa
-    }
+    if request.method == 'GET':
+        pesquisa = request.GET.get('pesquisa')
+        
+    if not pesquisa: 
+        empresa = Mod_Empresa.objects.all()
+    else:
+        empresa = Mod_Empresa.objects.filter(
+            Q(razao_iconatins=pesquisa) | Q(cnpj_icontains=pesquisa))
     
-    return render(request, 'logon.html', context)
+        

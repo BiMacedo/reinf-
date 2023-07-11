@@ -53,7 +53,7 @@
     <div class="row">
       <div class="col-md-3 sidebar">
         <h2>Olá {{request.user}}</h2>
-        <p><strong>Empresa:</strong><a href="#">{{request.user.cod_empresa}}</a></p>
+        <p><strong>Empresa:</strong><a href="#">{{request.razao}}</a></p>
         <p><strong>Email:</strong> <a href="#">{{request.user.email}}</a></p>
 
         <ul>
@@ -90,29 +90,22 @@
         <tbody>
           {% for Empresa in Empresa %}
           <tr>
-            <td>{{Mod_Empresa.cod_empresa}}</td>
-            <td>{{Mod_Empresa.cnpj}}</td>
+            <td>{{Empresa.cod_empresa}}</td>
+            <td>{{Empresa.razao}}</td>
+            <td></td>
+            <td></td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
-
+      
     </div>
   </div>
-
+  
   {% endif %}
   <main>
 
   </main>
-
-  <footer>
-    <!-- Footer -->
-    <section style='background: #3498db; color:#fff;'></section>
-    <br />
-    <center>&copy;<NAME>, All Rights Reserved
-        &nbsp;&nbsp;|&nbsp;&nbsp;| Designed by&nbsp;&nbsp;<b>
-          <img height=50px width=176px alt="" title=" <NAME>" data-tippy-theme="light"></b>
-  </footer>
 
 </body>
 
