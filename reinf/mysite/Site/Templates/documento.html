@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/doc.css'%}">
+  <link rel="icon" href="{%static 'img/logo.png'%}" type="image/x-icon">
+  <title>Documento</title>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-search">
+      <form action="/search" method="GET">
+        <input type="text" name="q" placeholder="Digite sua pesquisa">
+        <button type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+    </div>
+    <ul class="navbar-menu">
+      <li><a href="#">Página 1</a></li>
+      <li><a href="#">Página 2</a></li>
+      <li><a href="#">Página 3</a></li>
+    </ul>
+  </nav>
+  
+</body>
+</html>

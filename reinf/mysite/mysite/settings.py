@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.auth.password_validation',
     'Site',
+    'bootstrap4',
     
 ]
 

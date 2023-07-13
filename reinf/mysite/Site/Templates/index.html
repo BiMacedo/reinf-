@@ -1,41 +1,183 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-
-<head>
-    <title>Login</title>
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+<html lang="pt-br">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    
+    <link rel="stylesheet" href="{%static 'css/index.css' %}">
     <link rel="icon" href="{%static 'img/logo.png'%}" type="image/x-icon">
-</head>
+    
+  </head>
+  
+  <body>
+    {% if user.is_authenticated and not request.user == None%}
 
-<body>
-    <div class="login-page">
-        <div class="form">
-            <img src="{% static 'img/logo.png'%}" alt="Logo Process" width="70px">
-          <form class="login-form" action="" method="post">
-
-            {% csrf_token %}
-      
-            {% if erro_login %}
-            <script>
-              alert('{{ erro_login }}')
-            </script>
-            {% endif %}
-      
-            {% if error_message %}
-            <p><strong>{{ error_message }}</strong></p>
-            {% endif %}
-      
-            <input type="text" placeholder="username" name="usuario" id="usuario"/>
-            <input type="password" placeholder="password" name="senha" id="senha"/>
-            <button type="submit">login</button>
-          <!--  <p class="message">Not registered? <a href="#">Create an account</a></p>-->
-          </form>
-        </div>
+    <nav class="navbar">
+    <div class="navbar-search">
+      <form action="/search" method="GET">
+        <input type="text" name="q" placeholder="Digite sua pesquisa">
+        <button type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+    </div>
+    <ul class="navbar-menu">
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+      <li><a href="#"></a></li>
+    </ul>
+  </nav>
+  <br>
+  <br>
+  <br>
+    <div class="container">
+      <div class="apresentação">
+        <h2>Olá {{request.user}}</h2>
+        <p><strong>Empresa:</strong><a href="#">{{request.razao}}</a></p>
+        <p><strong>Email:</strong> <a href="#">{{request.user.email}}</a></p>
       </div>
-      
-      
+    </div>
+
+    <div class="menu-container">
+    <div class="area"></div>
+    <nav class="main-menu">
+      <img src="{% static 'img/logo.png' %}" alt="Logo Process" width="20px">
+      <ul>
+        <li>
+          <a href="#">
+            <i class="fa fa-home fa-2x"></i>
+            <span class="nav-text">
+              Menu
+            </span>
+          </a>
+          <ul class="submenu">
+            <li><a href="#">Subitem 1</a></li>
+            <li><a href="#">Subitem 2</a></li>
+            <li><a href="#">Subitem 3</a></li>
+          </ul>
+        </li>
+
+        <li class="has-subnav">
+          <a href="#">
+            <i class="fa fa-globe fa-2x"></i>
+            <span class="nav-text">
+              NF-e
+            </span>
+          </a>
+          <ul class="submenu">
+            <li><a href="#">Subitem 1</a></li>
+            <li><a href="#">Subitem 2</a></li>
+            <li><a href="#">Subitem 3</a></li>
+          </ul>
+        </li>
+
+        <li class="has-subnav">
+          <a href="{% url 'Site:documento' %}">
+            <!-- <i class="fa fa-comments fa-2x"></i> -->
+            <i class="fa fa-book fa-2x"></i>
+            <span class="nav-text">
+              Documentação
+            </span>
+          </a>
+  
+        </li>
+        <li class="has-subnav">
+          <a href="#">
+            <i class="fa fa-camera-retro fa-2x"></i>
+            <span class="nav-text">
+              Profile
+            </span>
+          </a>
+  
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-film fa-2x"></i>
+            <span class="nav-text">
+              Surveying Tutorials
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-book fa-2x"></i>
+            <span class="nav-text">
+              Surveying Jobs
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-cogs fa-2x"></i>
+            <span class="nav-text">
+              Tools & Resources
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-map-marker fa-2x"></i>
+            <span class="nav-text">
+              Member Map
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-info fa-2x"></i>
+            <span class="nav-text">
+              Documentation
+            </span>
+          </a>
+        </li>
+      </ul>
+  
+      <ul class="logout">
+        <li>
+          <a href="#">
+            <i class="fa fa-power-off fa-2x"></i>
+            <span class="nav-text">
+              Logout
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    </div>
+   
+
+          <div class="table-container">
+            <div class="table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CNPJ</th>
+                    <th>Grupo Empresa</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for empresa in empresas %}
+                  <tr>
+                    <td>{{ empresa.cod_empresa}}</td>
+                    <td>{{empresa.razao}}</td>
+                    <td>{{ empresa.cnpj }}</td>
+                    <td>{{empresa.grp_empresa}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </main>
+
+        {% endif %}
+
+        <script src="{% static 'app.js' %}"></script>
 </body>
 
 </html>

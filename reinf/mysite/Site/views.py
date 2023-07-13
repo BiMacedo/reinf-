@@ -11,10 +11,14 @@ from .forms import login as Form_login
 
 # Create your views here.
 
-def user_login(request):
+def inicializar(request):
+    return redirect('Site:login')
+
+
+def login_usuario(request):
     if request.method == 'GET':
         logout(request)
-        return render(request, 'index.html')
+        return render(request, 'login.html')
     
     elif request.method == 'POST':
         usuario = request.POST['usuario']
@@ -24,7 +28,7 @@ def user_login(request):
         
         if auth_usuario is not None:
             login(request, auth_usuario)
-            return render(request,'logon.html')
+            return redirect('Site:index')
 
         else:
 
@@ -34,24 +38,20 @@ def user_login(request):
             return render(request, 'index.html', context=context)
 
 
-def logon(request):
+def index(request):
     if request.method == 'GET':
-        return render(request, 'logon.html')
+        empresas = Mod_Empresa.objects.all()
+        context = { 'empresas': empresas }
+        return render(request, 'index.html', context=context)
     
     elif request.method == 'POST':
-        return redirect(request, 'logon.html')
-    
-def empresa(request, cod_usuario):
-    empresa = []
-    empresa = None
-    
+        empresas = Mod_Empresa.objects.all()
+        return render(request, 'index.html')
+
+
+def documento(request):
     if request.method == 'GET':
-        pesquisa = request.GET.get('pesquisa')
-        
-    if not pesquisa: 
-        empresa = Mod_Empresa.objects.all()
-    else:
-        empresa = Mod_Empresa.objects.filter(
-            Q(razao_iconatins=pesquisa) | Q(cnpj_icontains=pesquisa))
+        return render(request,'documento.html') 
     
-        
+    elif request.method == 'POST':
+        return render(request,'documento.html') 

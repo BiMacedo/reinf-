@@ -1,0 +1,45 @@
+html, body{
+  margin: 0px;
+  padding:0px ;
+}
+
+.navbar {
+  background-color: #212121;
+  padding: 10px;
+}
+
+.navbar-search {
+  float: right;
+}
+
+.navbar-search input[type="text"] {
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+}
+
+.navbar-search button {
+  background-color: #212121;
+  border: none;
+  padding: 6px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.navbar-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.navbar-menu li {
+  float: left;
+}
+
+.navbar-menu li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}

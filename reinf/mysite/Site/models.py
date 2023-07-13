@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
     
 class Empresa(models.Model):
-    cod_empresa = models.CharField(primary_key=True, max_length=10)
+    cod_empresa = models.IntegerField(primary_key=True)
     cnpj = models.CharField(max_length=14)
     razao = models.CharField(max_length=120, blank=True, null=True)
     fantasia = models.CharField(max_length=60, blank=True, null=True)

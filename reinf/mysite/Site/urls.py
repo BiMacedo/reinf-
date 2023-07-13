@@ -9,10 +9,10 @@ from django.conf.urls.static import static
 app_name = 'Site'
 
 urlpatterns = [
-    path('',views.user_login,name='login'),
-   # path('logon/',views.logon,name='logon'),
-    path('logon', login_required(views.logon), name='logon'),
-   # path('tabela',views.tabela, name='Tabela'),
+    path( '', views.inicializar, name='inicializar' ),
+    path( 'login/', views.login_usuario, name='login' ),
+    path( 'index/', login_required(views.index), name='index' ),
+    path('documento/', login_required(views.documento), name='documento'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
