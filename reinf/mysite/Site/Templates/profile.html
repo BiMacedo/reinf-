@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/profile.css'%}">
+  <title>Profile</title>
+
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-search">
+      <form action="/search" method="GET">
+        <input type="text" name="q" placeholder="Digite sua pesquisa">
+        <button type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+    </div>
+    <ul class="navbar-menu">
+      <li><a href="#">Página 1</a></li>
+      <li><a href="#">Página 2</a></li>
+      <li><a href="#">Página 3</a></li>
+    </ul>
+  </nav>
+  <div class="profile">
+    <div class="profile-image">
+      <img src="path/to/profile-image.jpg" alt="Profile Image">
+    </div>
+    <div class="profile-info">
+      <h2>{{ request.user }}</h2>
+      <p>Localização: </p>
+      <p>Email: {{request.user.email}}</p>
+      <p>Website: <a href="http://seusite.com">seusite.com</a></p>
+    </div>
+  </div>
+
+  <div class="profile-description">
+    <h2>Descrição</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam finibus enim sed risus tempor, et pretium urna sodales. Nulla sit amet varius justo. Vestibulum congue eu justo eu fringilla.</p>
+  </div>
+
+  <div class="profile-skills">
+    <h2>Habilidades</h2>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>Python</li>
+    </ul>
+  </div>
+  
+      
+   
+
+
+    </div>
+  </div>
+</body>
+</html>

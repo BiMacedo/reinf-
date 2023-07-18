@@ -9,6 +9,13 @@
     
     <link rel="stylesheet" href="{%static 'css/index.css' %}">
     <link rel="icon" href="{%static 'img/logo.png'%}" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <script>
+    function abrirNovaJanela() {
+      var novaJanela = window.open("caixas/teste.html", "_blank", "width=800,height=600");
+      // novaJanela.document.write("<html><head><title>Minha Nova Janela</title></head><body><h1>Conteúdo Personalizado</h1><p>Esta é a minha nova janela.</p></body></html>");
+    }
+  </script>
     
   </head>
   
@@ -33,13 +40,18 @@
   <br>
   <br>
   <br>
-    <div class="container">
-      <div class="apresentação">
-        <h2>Olá {{request.user}}</h2>
-        <p><strong>Empresa:</strong><a href="#">{{request.razao}}</a></p>
-        <p><strong>Email:</strong> <a href="#">{{request.user.email}}</a></p>
+
+    {% for empresa in empresas %}
+    {% if forloop.counter == 2 %}
+      <div class="container">
+        <div class="apresentação">
+          <h2>Olá {{request.user}}</h2>
+          <p><strong>Empresa:</strong>{{empresa.razao}}</p>
+          <!-- <p><strong>Email:</strong> <a href="#">{{request.user.email}}</a></p> -->
+        </div>
       </div>
-    </div>
+      {% endif %}
+      {%endfor%}
 
     <div class="menu-container">
     <div class="area"></div>
@@ -50,7 +62,7 @@
           <a href="#">
             <i class="fa fa-home fa-2x"></i>
             <span class="nav-text">
-              Menu
+              Cadastro
             </span>
           </a>
           <ul class="submenu">
@@ -64,7 +76,7 @@
           <a href="#">
             <i class="fa fa-globe fa-2x"></i>
             <span class="nav-text">
-              NF-e
+              Grupo Empresa
             </span>
           </a>
           <ul class="submenu">
@@ -79,20 +91,20 @@
             <!-- <i class="fa fa-comments fa-2x"></i> -->
             <i class="fa fa-book fa-2x"></i>
             <span class="nav-text">
-              Documentação
+              Empresa
             </span>
           </a>
   
         </li>
         <li class="has-subnav">
-          <a href="#">
+          <a href="{% url 'Site:profile' %}">
             <i class="fa fa-camera-retro fa-2x"></i>
             <span class="nav-text">
-              Profile
+              Empresa
             </span>
           </a>
   
-        </li>
+        <!-- </li>
         <li>
           <a href="#">
             <i class="fa fa-film fa-2x"></i>
@@ -133,7 +145,7 @@
             </span>
           </a>
         </li>
-      </ul>
+      </ul> -->
   
       <ul class="logout">
         <li>
@@ -147,10 +159,9 @@
       </ul>
     </nav>
     </div>
-   
-
-          <div class="table-container">
+          <!-- <div class="table-container">
             <div class="table">
+              <h2>Empresa</h2>
               <table>
                 <thead>
                   <tr>
@@ -172,12 +183,84 @@
                 </tbody>
               </table>
             </div>
-          </div>
-        </main>
+          </div> -->
 
+          <div class="table-container">
+            <div class="table">
+              <h2>Empresa</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CNPJ</th>
+                    <th>Grupo Empresa</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for empresa in empresas %}
+                  <tr>
+                    <td>
+                      <a href="#" data-toggle="modal" data-target="#myModal{{ empresa.cod_empresa }}">{{ empresa.cod_empresa }}</a>
+                    </td>
+                    <td>{{ empresa.razao }}</td>
+                    <td>{{ empresa.cnpj }}</td>
+                    <td>{{ empresa.grp_empresa }}</td>
+                  </tr>
+                  <!-- Modal para cada empresa -->
+                  <div class="modal fade" id="myModal{{ empresa.cod_empresa }}">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Detalhes da Empresa</h5>
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                          <!-- Formulário -->
+                          <form>
+                            <div class="form-group">
+                              <label for="nome">ID:</label>
+                              <input type="text" class="form-control" id="nome" value="{{ empresa.cod_empresa }}"readonly>
+                            </div>
+                            <div class="form-group">
+                              <label for="nome">Nome:</label>
+                              <input type="text" class="form-control" id="nome" value="{{ empresa.razao }}">
+                            </div>
+                            <div class="form-group">
+                              <label for="cnpj">CNPJ:</label>
+                              <input type="text" class="form-control" id="cnpj" value="{{ empresa.cnpj }}"readonly>
+                            </div>
+                            <div class="form-group">
+                              <label for="Grupo Empresa">Grupo Empresa:</label>
+                              <input type="text" class="form-control" id="cnpj" value="{{ empresa.grp_empresa }}"readonly>
+                            </div>
+                          </form>
+                        </div>
+                        <!-- <div class="modal-body">
+                          <p>ID: {{ empresa.cod_empresa }}</p>
+                          <p>Nome: {{ empresa.razao }}</p>
+                          <p>CNPJ: {{ empresa.cnpj }}</p>
+                          <p>Grupo Empresa: {{ empresa.grp_empresa }}</p>
+                        </div> -->
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
         {% endif %}
 
-        <script src="{% static 'app.js' %}"></script>
-</body>
-
+      
+<!-- Bootstrap da janela modal -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+<!--  -->
 </html>
