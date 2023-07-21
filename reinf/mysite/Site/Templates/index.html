@@ -10,185 +10,32 @@
     <link rel="stylesheet" href="{%static 'css/index.css' %}">
     <link rel="icon" href="{%static 'img/logo.png'%}" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-   <script>
-    function abrirNovaJanela() {
-      var novaJanela = window.open("caixas/teste.html", "_blank", "width=800,height=600");
-      // novaJanela.document.write("<html><head><title>Minha Nova Janela</title></head><body><h1>Conteúdo Personalizado</h1><p>Esta é a minha nova janela.</p></body></html>");
-    }
-  </script>
-    
+
   </head>
   
   <body>
     {% if user.is_authenticated and not request.user == None%}
 
-    <nav class="navbar">
-    <div class="navbar-search">
-      <form action="/search" method="GET">
-        <input type="text" name="q" placeholder="Digite sua pesquisa">
-        <button type="submit">
-          <i class="fa fa-search"></i>
-        </button>
-      </form>
-    </div>
-    <ul class="navbar-menu">
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li>
-    </ul>
-  </nav>
-  <br>
-  <br>
-  <br>
-
-    {% for empresa in empresas %}
-    {% if forloop.counter == 2 %}
-      <div class="container">
-        <div class="apresentação">
-          <h2>Olá {{request.user}}</h2>
-          <p><strong>Empresa:</strong>{{empresa.razao}}</p>
-          <!-- <p><strong>Email:</strong> <a href="#">{{request.user.email}}</a></p> -->
-        </div>
-      </div>
-      {% endif %}
-      {%endfor%}
-
-    <div class="menu-container">
-    <div class="area"></div>
-    <nav class="main-menu">
-      <img src="{% static 'img/logo.png' %}" alt="Logo Process" width="20px">
+    <button id="menu-toggle" ><i class="fa-solid fa-bars" style="color: #ffffff;"></i></button>
+  <div class="sidebar">
+    <header>Menu</header>
+    <div class="container">
       <ul>
-        <li>
-          <a href="#">
-            <i class="fa fa-home fa-2x"></i>
-            <span class="nav-text">
-              Cadastro
-            </span>
-          </a>
-          <ul class="submenu">
-            <li><a href="#">Subitem 1</a></li>
-            <li><a href="#">Subitem 2</a></li>
-            <li><a href="#">Subitem 3</a></li>
+        
+        <li class="dropdown">
+          <a href="#">Cadastro</a>
+          <!-- Dropdown para Página 4 -->
+          <ul class="sub-menu">
+            <li><a href="#">Grupo Empresa</a></li>
+            <li><a href="#">Empresa</a></li>
           </ul>
-        </li>
-
-        <li class="has-subnav">
-          <a href="#">
-            <i class="fa fa-globe fa-2x"></i>
-            <span class="nav-text">
-              Grupo Empresa
-            </span>
-          </a>
-          <ul class="submenu">
-            <li><a href="#">Subitem 1</a></li>
-            <li><a href="#">Subitem 2</a></li>
-            <li><a href="#">Subitem 3</a></li>
-          </ul>
-        </li>
-
-        <li class="has-subnav">
-          <a href="{% url 'Site:documento' %}">
-            <!-- <i class="fa fa-comments fa-2x"></i> -->
-            <i class="fa fa-book fa-2x"></i>
-            <span class="nav-text">
-              Empresa
-            </span>
-          </a>
-  
-        </li>
-        <li class="has-subnav">
-          <a href="{% url 'Site:profile' %}">
-            <i class="fa fa-camera-retro fa-2x"></i>
-            <span class="nav-text">
-              Empresa
-            </span>
-          </a>
-  
-        <!-- </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-film fa-2x"></i>
-            <span class="nav-text">
-              Surveying Tutorials
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-book fa-2x"></i>
-            <span class="nav-text">
-              Surveying Jobs
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-cogs fa-2x"></i>
-            <span class="nav-text">
-              Tools & Resources
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-map-marker fa-2x"></i>
-            <span class="nav-text">
-              Member Map
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-info fa-2x"></i>
-            <span class="nav-text">
-              Documentation
-            </span>
-          </a>
-        </li>
-      </ul> -->
-  
-      <ul class="logout">
-        <li>
-          <a href="#">
-            <i class="fa fa-power-off fa-2x"></i>
-            <span class="nav-text">
-              Logout
-            </span>
-          </a>
-        </li>
-      </ul>
-    </nav>
     </div>
-          <!-- <div class="table-container">
-            <div class="table">
-              <h2>Empresa</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>CNPJ</th>
-                    <th>Grupo Empresa</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for empresa in empresas %}
-                  <tr>
-                    <td>{{ empresa.cod_empresa}}</td>
-                    <td>{{empresa.razao}}</td>
-                    <td>{{ empresa.cnpj }}</td>
-                    <td>{{empresa.grp_empresa}}</td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            </div>
-          </div> -->
-
-          <div class="table-container">
-            <div class="table">
-              <h2>Empresa</h2>
-              <table>
+  </div>
+  <div class="content">
+    <h1>Conteúdo da Página</h1>
+    <p>Este é um exemplo de conteúdo da página.</p>
+    <table>
+          <h2>Empresa</h2>
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -236,12 +83,6 @@
                             </div>
                           </form>
                         </div>
-                        <!-- <div class="modal-body">
-                          <p>ID: {{ empresa.cod_empresa }}</p>
-                          <p>Nome: {{ empresa.razao }}</p>
-                          <p>CNPJ: {{ empresa.cnpj }}</p>
-                          <p>Grupo Empresa: {{ empresa.grp_empresa }}</p>
-                        </div> -->
                         <div class="modal-footer">
                           <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -254,13 +95,29 @@
               </table>
             </div>
           </div>
+        </div>
         {% endif %}
-
+        
       
 <!-- Bootstrap da janela modal -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
-<!--  -->
+        <script src="https://kit.fontawesome.com/111abf0fae.js" crossorigin="anonymous"></script>
+  <script>
+    // JavaScript para alternar a visibilidade da barra lateral
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    const content = document.querySelector('.content');
+    const table = document.querySelector('table');
+
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      content.classList.toggle('active');
+      table.classList.toggle('active');
+    });
+  </script>
+      </body>
+      <!--  -->
 </html>
+

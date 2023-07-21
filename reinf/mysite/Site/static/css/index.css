@@ -1,284 +1,116 @@
-@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
-@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+/* @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css); */
 
 /* Estilos gerais */
 html, body {
   margin: 0;
   padding: 0px;
-  font-family: Arial, sans-serif;
-  color: #345678;
 }
+button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
+/* @font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+} */
 
 /* Estilos do menu */
 .container {
   display: flex;
 }
 
-.menu-container {
-  width: 250px;
-  float: left;
-  /* outros estilos */
-}
 
-.fa-2x {
-  font-size: 2em;
-}
-
-.fa {
-  position: relative;
-  display: table-cell;
-  width: 60px;
-  height: 36px;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 20px;
-}
-
-.main-menu:hover,
-nav.main-menu.expanded {
-  width: 250px;
-  overflow: visible;
-}
-
-.main-menu {
-  text-align: center;
-  justify-content: center;
-  display: flexbox;
-  background: #212121;
-  border-right: 1px solid #e5e5e5;
+.sidebar {
   position: fixed;
   top: 0;
-  bottom: 0;
+  left: -200px; /* Começa escondida para a esquerda */
+  width: 200px;
   height: 100%;
-  left: 0;
-  width: 60px;
-  overflow: hidden;
-  transition: width 0.05s linear;
-  transform: translateZ(0) scale(1, 1);
-  z-index: 1000;
+  background-color: #f1f1f1;
+  transition: left 0.3s ease; /* Adiciona uma transição suave */
 }
 
-.main-menu>ul {
-  margin: 7px 0;
+.sidebar.active {
+  left: 0; /* Mostra a barra lateral quando a classe 'active' é aplicada */
 }
 
-.main-menu li {
-  position: relative;
-  display: block;
-  width: 250px;
-}
-
-.main-menu li>a {
-  position: relative;
-  display: table;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: #999;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  text-decoration: none;
-  transition: all 0.1s linear;
-}
-
-.main-menu .nav-icon {
-  position: relative;
-  display: table-cell;
-  width: 60px;
-  height: 36px;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 18px;
-}
-
-.main-menu .nav-text {
-  position: relative;
-  display: table-cell;
-  vertical-align: middle;
-  width: 190px;
-  font-family: 'Titillium Web', sans-serif;
-}
-
-.main-menu>ul.logout {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}
-
-.no-touch .scrollable.hover {
-  overflow-y: hidden;
-}
-
-.no-touch .scrollable.hover:hover {
-  overflow-y: auto;
-  overflow: visible;
-}
-
-a:hover,
-a:focus {
-  text-decoration: none;
-}
-
-nav {
-  user-select: none;
-}
-
-nav ul,
-nav li {
-  outline: 0;
-  margin: 0;
-  padding: 0;
-}
-
-.main-menu li:hover>a,
-nav.main-menu li.active>a,
-.dropdown-menu>li>a:hover,
-.dropdown-menu>li>a:focus,
-.dropdown-menu>.active>a,
-.dropdown-menu>.active>a:hover,
-.dropdown-menu>.active>a:focus,
-.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
-.dashboard-page nav.dashboard-menu ul li.active a {
+.sidebar header {
+  background-color: black;
   color: #fff;
-  background-color: #fbab6c;
+  padding: 15px;
+  text-align: center;
 }
 
-/* Área */
-.area {
-  float: left;
-  background: #e2e2e2;
-  width: 100%;
-  height: 100%;
-}
-
-/* Fonte personalizada */
-@font-face {
-  font-family: 'Titillium Web';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
-}
-
-.navbar {
-  background-color: #212121;
-  padding: 35px;
-  border: red solid 1px;
-  
-}
-
-.navbar-search {
-  float: right;
-}
-
-.navbar-search input[type="text"] {
-  padding: 5px;
-  border: none;
-  border-radius: 3px;
-}
-
-.navbar-search button {
-  background-color: #ddd;
-  border: none;
-  padding: 5px;
-  border-radius: 3px;
-  cursor: pointer;
-  /* border: red solid 1px; */
-}
-
-.navbar-menu {
+.sidebar ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.navbar-menu li {
-  float: left;
-}
-
-.navbar-menu li a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: #333;
-}
-/* Apresentação */
-.apresentação {
-  border: red 1px solid;
-  flex: 5;
-  margin-left: 61px;
-}
-
-/* Tabela */
-.table-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 50%;
-  margin: 0 auto;
-  height: 100vh;
-}
-
-.table-header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.table th,
-.table td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.table th {
-  background-color: #f2f2f2;
-}
-
-.table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-/* Menu suspenso */
-nav ul {
-  list-style: none;
   padding: 0;
   margin: 0;
 }
 
-nav ul li {
-  display: inline-block;
-  position: relative;
+.sidebar li {
+  margin-top: 10px;
 }
 
-nav ul li a {
+.sidebar li a {
   display: block;
   padding: 10px;
   text-decoration: none;
   color: #000;
 }
-
-nav ul li ul {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fff;
+.sidebar li ul {
+  display: none; /* Oculta o dropdown por padrão */
+  background-color: #f1f1f1; /* Cor de fundo do dropdown */
   padding: 0;
+  margin-left: 10px; /* Espaçamento à esquerda para indentação do dropdown */
+}
+.sidebar li:hover ul {
+  display: block; /* Exibe o dropdown ao passar o mouse no item do menu */
 }
 
-nav ul li:hover ul {
-  display: block;
+
+.content {
+  /* margin-left: 200px; A margem à esquerda é igual à largura da barra lateral */
+  padding: 20px;
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
+.sidebar.active + .content {
+  margin-left: 200px; /* A margem à esquerda se ajusta à largura da barra lateral quando ela estiver aberta */
 }
 
-nav ul li ul li {
-  display: block;
+table {
+  border-collapse: collapse;
+  width: 100%;
+  color: #588c7e;
+  font-family: monospace;
+  font-size: 25px;
+  text-align: left;
+  border: 1px solid #ddd;
+
 }
+
+
+#menu-toggle {
+  background-color: black; /* Cor de fundo do botão */
+  color: white; /* Cor do texto do botão */
+  padding: 1px ; /* Espaçamento interno do botão */
+  border: none; /* Remove a borda do botão */
+  cursor: pointer; /* Adiciona o ícone de mão ao passar o mouse */
+  border-radius: 1px; /* Adiciona bordas arredondadas ao botão */
+  
+}
+
+#menu-toggle:hover {
+  background-color: #45a049 ; /* Cor de fundo do botão quando passar o mouse */
+}
+
+
+
+
+
